@@ -2,10 +2,10 @@
 
 <h2>Результаты голосования</h2>
 <?
-$f = fopen('.data/golos.ser', 'r');
+$f = fopen('.data/golos.json', 'r');
 
 while(!feof($f)):
-	$vote = unserialize(fgets($f))['whom'];
+	$vote = json_decode(fgets($f))->whom;
     if($vote)
       $votes[$vote]++;
 endwhile;
