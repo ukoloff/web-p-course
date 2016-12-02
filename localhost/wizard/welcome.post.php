@@ -1,0 +1,3 @@
+<?
+wizard_next('name');
+?>
