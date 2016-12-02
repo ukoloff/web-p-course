@@ -2,7 +2,7 @@
 
 <?
 foreach(glob('*') as $f):
-	if(!file_exists($idx = $f.'/index.php')) continue;
+	if(!file_exists($idx = "$f/index.php")) continue;
 	echo "<li>", $f;
 endforeach;
 ?>
