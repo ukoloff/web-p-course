@@ -19,7 +19,7 @@ if('POST' == $_SERVER['REQUEST_METHOD']):
 endif;
 
 if(isset($_GET['capcha'])):
-  include('capcha.php');
+  include('capcha.png.php');
   exit();
 endif;
 
