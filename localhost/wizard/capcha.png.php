@@ -11,7 +11,8 @@ for($i=0;$i<$n;$i++)
 $_SESSION['?']=$text;
 
 // Replace path by your own font path
-$font = '.fonts/swgothi.ttf';
+$fonts = glob('.fonts/*.ttf');
+$font = $fonts[array_rand($fonts)];
 $angle = rand(-15,15);
 $size = 20;
 
