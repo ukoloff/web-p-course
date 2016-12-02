@@ -8,7 +8,12 @@ $total = @file_get_contents('.data/total.ini') + 1;
 file_put_contents('.data/total.ini', $total);
 
 ?>
-<h1>Счётчики</h1>
+<html>
+<head>
+  <Title>Заголовок</Title>
+</head>
+<body>
+<H1>Счётчики</H1>
 
 Привет!
 <br>
@@ -21,3 +26,5 @@ file_put_contents('.data/total.ini', $total);
 
 <hr>
 <a href=/>Home</a>
+</body>
+</html>
