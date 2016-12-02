@@ -6,9 +6,8 @@ foreach(glob('*') as $f):
 		continue;
     if(!preg_match('/<(h1|title)>(.*?)<\/\1>/', @file_get_contents($idx), $match))
     	continue;
-	echo "<li>", $f;
+?>
+<li><a href="<?= $f ?>"><?= trim($match[2]) ?></a></li>
+<?
 endforeach;
 ?>
-<li><a href=start>Первая страница</a>
-<li><a href=count>Счётчики</a>
-<li><a href=wizard>Мастер</a>
