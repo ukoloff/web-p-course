@@ -2,11 +2,10 @@
 
 <h2>Результаты голосования</h2>
 <?
-$f = fopen('.data/golos.log', 'r');
+$f = fopen('.data/golos.ser', 'r');
 
 while(!feof($f)):
-	$s = fgets($f);
-    $vote = trim(explode(':', $s)[0]);
+	$vote = unserialize(fgets($f))['whom'];
     if($vote)
       $votes[$vote]++;
 endwhile;
