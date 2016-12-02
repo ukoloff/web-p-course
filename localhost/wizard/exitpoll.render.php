@@ -6,8 +6,7 @@ $f = fopen('.data/golos.log', 'r');
 
 while(!feof($f)):
 	$s = fgets($f);
-	$line = explode(':', $s);
-    $votes[$line[0]]++;
+    $votes[explode(':', $s)[0]]++;
 endwhile;
 
 foreach($votes as $k=>$v):
