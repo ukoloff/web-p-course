@@ -14,7 +14,7 @@ $_SESSION['?']=$text;
 $fonts = glob('.fonts/*.ttf');
 $font = $fonts[array_rand($fonts)];
 $angle = rand(-15,15);
-$size = 20;
+$size = rand(20, 30);
 
 foreach(imagettfbbox($size, $angle, $font, $text) as $k=>$v):
 	if( $k & 1)
