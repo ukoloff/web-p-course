@@ -8,7 +8,9 @@ $total = @file_get_contents('.data/total.ini') + 1;
 file_put_contents('.data/total.ini', $total);
 
 ?>
-<h1>Счётчики</h1>
+<h1>
+	Счётчики
+</h1>
 
 Привет!
 <br>
