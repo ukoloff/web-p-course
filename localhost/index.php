@@ -2,7 +2,10 @@
 
 <?
 foreach(glob('*') as $f):
-	if(!file_exists($idx = "$f/index.php")) continue;
+	if(!file_exists($idx = "$f/index.php")) 
+		continue;
+    if(!preg_match('/<(h1|title)>(.*?)<\/\1>/', @file_get_contents($idx), $match))
+    	continue;
 	echo "<li>", $f;
 endforeach;
 ?>
