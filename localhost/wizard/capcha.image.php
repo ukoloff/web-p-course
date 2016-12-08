@@ -3,16 +3,16 @@ if('capcha'!=$_SESSION['page'])
 	exit();
 
 header('Content-Type: image/png');
-$n = 5;
-$text = '';
 
-for($i=0;$i<$n;$i++)
-	$text.=rand(0,9);
-$_SESSION['?']=$text;
+$text = rand(0,9);
+$_SESSION['text'] = $text;
+
+$fonts = glob('.fonts/*.ttf');
+
+//print_r($fonts); exit();
+$font = $fonts[array_rand($fonts)];
 
 // Replace path by your own font path
-$fonts = glob('.fonts/*.ttf');
-$font = $fonts[array_rand($fonts)];
 //$font = '.fonts/swgothi.ttf';
 $angle = rand(-15,15);
 $size = rand(20, 30);
@@ -39,6 +39,7 @@ $color = imagecolorallocate($im, 0, 0, 255);
 imagettftext($im, $size, $angle, -$x0, -$y0, $color, $font, $text);
 //imagefilter($im, IMG_FILTER_EMBOSS);
 imagefilter($im, IMG_FILTER_GAUSSIAN_BLUR);
+header('Content-Type: image/png');
 imagepng($im);
-
+imagedestroy($im);
 ?>

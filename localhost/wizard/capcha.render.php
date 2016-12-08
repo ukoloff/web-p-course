@@ -1,7 +1,11 @@
 Are you a robot?
 <br>
 <br>
-<img src='?capcha'>
+<? for ($i = 1; $i <= $_SESSION['count']; $i++) { 
+	?>
+ <img src="?capcha<?=$i?>"/>
+<?; 
+}?>
 <br>
 <br>
 <input name='chislo' autofocus required>

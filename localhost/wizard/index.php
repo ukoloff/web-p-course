@@ -18,15 +18,21 @@ if('POST' == $_SERVER['REQUEST_METHOD']):
   header('Location: ./');
 endif;
 
-if(isset($_GET['capcha'])):
+
+for ($i = 1; $i <= $_SESSION['count']; $i++)
+{
+if (isset($_GET['capcha'.$i])):
   include('capcha.image.php');
+  $_SESSION['?'.$i] = $_SESSION['text'];
   exit();
 endif;
+}
 
-function nextPage($name)
+function nextPage($name, $count = NULL)
 {
   $_SESSION['pages'][]= $_SESSION['page'];
   $_SESSION['page'] = $name;
+  $_SESSION['count'] = $count;
 }
 
 $Disabled = count($_SESSION['pages']) ? '' : 'disabled';
