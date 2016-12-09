@@ -15,7 +15,7 @@ $res = $db->query(<<<SQL
 SQL
 );
 
-while($row = $res->fetchArray()):
+while($row = $res->fetch()):
   echo '<li><b>', $row[0], '</b>: ', $row[1];
 endwhile;
 

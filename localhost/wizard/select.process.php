@@ -4,10 +4,11 @@ include('select.db.php');
 if($_POST['action']):
   $_SESSION['president'] = $_POST['action'];
   nextPage('exitpoll');
+
   $z = $db->prepare(<<<SQL
   Insert Into
     logs(ctime, whom, ip, ua)
-  Values(datetime('now'), :whom, :ip, :ua)
+  Values(now(), :whom, :ip, :ua)
 SQL
   );
   $z->bindValue(':whom', $_POST['action']);
