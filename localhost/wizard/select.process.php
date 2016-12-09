@@ -2,13 +2,19 @@
 if($_POST['action']):
   $_SESSION['president'] = $_POST['action'];
   nextPage('exitpoll');
-  $f = fopen('.data/votes.json', 'a');
-  fwrite($f,
-    json_encode([
-      whom=>$_POST['action'],
-      ip=>$_SERVER["REMOTE_ADDR"],
-      ua=>$_SERVER["HTTP_USER_AGENT"],
-    ])."\n");
-  fclose($f);
+
+  include('db.php');
+
+  $stmt = $db->prepare(<<<SQL
+    Insert Into
+      logs(ctime, whom, ip, ua)
+    Values(datetime('now'), :whom, :ip, :ua)
+SQL
+);
+  $stmt->bindValue(':whom', $_POST['action']);
+  $stmt->bindValue(':ip', $_SERVER["REMOTE_ADDR"]);
+  $stmt->bindValue(':ua', $_SERVER["HTTP_USER_AGENT"]);
+
+  $stmt->execute();
 endif;
 ?>
