@@ -3,15 +3,20 @@
 <h2>Результаты голосования</h2>
 
 <?
-$f = fopen('.data/votes.json', 'r');
-while(!feof($f)):
-  $s = fgets($f);
-  $vote = json_decode($s)->whom;
-  if(!$vote) continue;
-  $votes[$vote]++;
+include('select.db.php');
+
+$res = $db->query(<<<SQL
+  Select
+    whom, count(*) as N
+  From
+    logs
+  Group By whom
+  Order By 2 Desc
+SQL
+);
+
+while($row = $res->fetchArray()):
+  echo '<li><b>', $row[0], '</b>: ', $row[1];
 endwhile;
-foreach($votes as $k=>$v):
-  echo '<li><b>', $k, '</b>: ', $v;
-endforeach;
 
 ?>
