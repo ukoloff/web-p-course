@@ -3,7 +3,11 @@
 
 <h2>Результаты голосования</h2>
 
-<table class='table'>
+<table class='table table-bordered table-striped table-hover'>
+  <thead>
+    <th>Участник</th>
+    <th>Голосов</th>
+  </thead>
 <?
 include('db.php');
 
@@ -20,6 +24,6 @@ SQL
 );
 
 while($row = $result->fetchArray())
-  echo '<tr><td>', $row['whom'], '</td><td>', $row['N'], '</td></tr>';
+  echo '<tr><td>', $row['whom'], '</td><td class=text-right>', $row['N'], '</td></tr>';
 ?>
 </table>
