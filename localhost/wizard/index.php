@@ -14,13 +14,22 @@ $Disabled = count($_SESSION['pages']) ? '' : 'disabled';
 <table width='100%'>
   <tr>
     <td align='left'>
-      <input type='button' value='Отмена' <?= $Disabled ?>
+      <button type='button' class='btn btn-danger' <?= $Disabled ?>
         onclick="document.forms.cancel.submit()">
+        <i class='fa fa-ban'></i>
+        Отмена
+      </button>
     </td>
     <td align='right'>
-      <input type='button' value='Назад &lt;&lt;' <?= $Disabled ?>
+      <button type='button' class='btn btn-warning' <?= $Disabled ?>
         onclick="document.forms.back.submit()">
-      <input type='submit' value='Далее &gt;&gt;'>
+        <i class='fa fa-arrow-left'></i>
+        Назад
+      </button>
+      <button type='submit' class='btn btn-success'>
+        <i class='fa fa-arrow-right'></i>
+        Далее
+      </button>
     </td>
   </tr>
 </table>
@@ -31,7 +40,7 @@ $Disabled = count($_SESSION['pages']) ? '' : 'disabled';
 <form method='post' name='back'  action='?back'></form>
 
 <hr>
-<a href=/ class='btn btn-success'>
+<a href=/ class='btn btn-info'>
 <i class='fa fa-home'></i>
 Домой
 </a>
