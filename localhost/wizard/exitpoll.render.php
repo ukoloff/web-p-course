@@ -1,5 +1,5 @@
 Ваш выбор:
-<span class='whom'><?= $_SESSION['president'] ?></span>
+<span class='text-info'><?= $_SESSION['president'] ?></span>
 
 <h2>Результаты голосования</h2>
 
@@ -20,20 +20,5 @@ SQL
 
 while($row = $result->fetchArray())
   echo '<li><b>', $row['whom'], '</b>: ',
-    '<span class="whom">', $row['N'], '</span>';
+    '<span class="text-info">', $row['N'], '</span>';
 ?>
-<style>
-.whom /* selector */
-{
-  color: red;
-  font-size: 90%;
-  background: yellow;
-  border: solid 1px green;
-}
-
-h2
-{
-  color: navy;
-  text-decoration: underline;
-}
-</style>
