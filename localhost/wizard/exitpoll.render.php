@@ -7,6 +7,7 @@
   <thead>
     <th>Участник</th>
     <th>Голосов</th>
+    <th>Последний голос</th>
   </thead>
 <?
 include('db.php');
@@ -14,7 +15,8 @@ include('db.php');
 $result = $db->query(<<<SQL
   Select
     whom,
-    count(*) as N
+    count(*) as N,
+    max(ctime) as ctime
   From
     logs
   Group By
@@ -31,6 +33,9 @@ while($row = $result->fetchArray()):
   </td>
   <td class=text-right>
     <?= $row['N'] ?>
+  </td>
+  <td class=text-right>
+    <?= $row['ctime'] ?>
   </td>
 </tr>
 <?
