@@ -1,9 +1,14 @@
-<? include('head.php'); ?>
+<?
+include 'head.php';
+include 'html.html';
+?>
 <h1>Мастер</h1>
 
 <form method='post'>
 <?
 @include($_SESSION['page'].".render.php");
+
+$Disabled = count($_SESSION['pages']) ? '' : 'disabled';
 ?>
 <p>
 <table width='100%'>
@@ -27,3 +32,7 @@
 
 <hr>
 <a href=/>Home</a>
+
+</div>
+</body>
+</html>

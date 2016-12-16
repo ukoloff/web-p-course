@@ -28,6 +28,4 @@ function nextPage($name)
   $_SESSION['pages'][]= $_SESSION['page'];
   $_SESSION['page'] = $name;
 }
-
-$Disabled = count($_SESSION['pages']) ? '' : 'disabled';
 ?>
