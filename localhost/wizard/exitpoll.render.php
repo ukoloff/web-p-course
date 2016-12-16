@@ -23,7 +23,17 @@ $result = $db->query(<<<SQL
 SQL
 );
 
-while($row = $result->fetchArray())
-  echo '<tr><td>', $row['whom'], '</td><td class=text-right>', $row['N'], '</td></tr>';
+while($row = $result->fetchArray()):
+?>
+<tr>
+  <td>
+    <?= $row['whom'] ?>
+  </td>
+  <td class=text-right>
+    <?= $row['N'] ?>
+  </td>
+</tr>
+<?
+endwhile;
 ?>
 </table>
