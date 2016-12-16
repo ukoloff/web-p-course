@@ -3,6 +3,7 @@
 
 <h2>Результаты голосования</h2>
 
+<table class='table'>
 <?
 include('db.php');
 
@@ -19,6 +20,6 @@ SQL
 );
 
 while($row = $result->fetchArray())
-  echo '<li><b>', $row['whom'], '</b>: ',
-    '<span class="text-info">', $row['N'], '</span>';
+  echo '<tr><td>', $row['whom'], '</td><td>', $row['N'], '</td></tr>';
 ?>
+</table>
