@@ -1,8 +1,3 @@
-Ваш выбор:
-<span class='text-info'><?= $_SESSION['president'] ?></span>
-
-<h2>Результаты голосования</h2>
-
 <table class='table table-bordered table-striped table-hover'>
   <thead>
     <th>Участник</th>
@@ -30,6 +25,9 @@ while($row = $result->fetchArray()):
 <tr>
   <td>
     <?= $row['whom'] ?>
+    <? if($row['whom'] == $_SESSION['president']): ?>
+      <i class='fa fa-check text-danger' title='Ваш выбор'></i>
+    <? endif; ?>
   </td>
   <td class=text-right>
     <?= $row['N'] ?>
