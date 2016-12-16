@@ -31,7 +31,10 @@ $Disabled = count($_SESSION['pages']) ? '' : 'disabled';
 <form method='post' name='back'  action='?back'></form>
 
 <hr>
-<a href=/>Home</a>
+<a href=/ class='btn btn-success'>
+<i class='fa fa-home'></i>
+Домой
+</a>
 
 </div>
 </body>
