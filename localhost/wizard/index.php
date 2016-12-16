@@ -11,28 +11,22 @@ include 'html.html';
 $Disabled = count($_SESSION['pages']) ? '' : 'disabled';
 ?>
 <p>
-<table width='100%'>
-  <tr>
-    <td align='left'>
-      <button type='button' class='btn btn-danger' <?= $Disabled ?>
-        onclick="document.forms.cancel.submit()">
-        <i class='fa fa-ban'></i>
-        Отмена
-      </button>
-    </td>
-    <td align='right'>
-      <button type='button' class='btn btn-warning' <?= $Disabled ?>
-        onclick="document.forms.back.submit()">
-        <i class='fa fa-arrow-left'></i>
-        Назад
-      </button>
-      <button type='submit' class='btn btn-success'>
-        <i class='fa fa-arrow-right'></i>
-        Далее
-      </button>
-    </td>
-  </tr>
-</table>
+<div class=text-right>
+<button type='button' class='btn btn-danger pull-left' <?= $Disabled ?>
+  onclick="document.forms.cancel.submit()">
+  <i class='fa fa-ban'></i>
+  Отмена
+</button>
+<button type='button' class='btn btn-warning' <?= $Disabled ?>
+  onclick="document.forms.back.submit()">
+  <i class='fa fa-arrow-left'></i>
+  Назад
+</button>
+<button type='submit' class='btn btn-success'>
+  <i class='fa fa-arrow-right'></i>
+  Далее
+</button>
+</div>
 </form>
 
 <form method='post' name='cancel' action='?cancel'></form>
