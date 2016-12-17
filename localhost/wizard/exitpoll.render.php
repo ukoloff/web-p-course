@@ -1,39 +1,65 @@
-Ваш выбор:
-<span class='whom'><?= $_SESSION['president'] ?></span>
+<?
+$sort = @$_GET['sort'][0];
+$n = ord(strtoupper($sort)) - ord('A') + 1;
+if($n<1 || $n>3) $n = 2;
 
-<h2>Результаты голосования</h2>
+$by = (1==$n);
+if('A' <= $sort && $sort <= 'Z')
+  $by = !$by;
+$by = ($by ? 'ASC' : 'DESC');
 
+$names = Array('Кандидат', 'Голосов', 'Последний');
+//$names = 'Кандидат Голосов Последний'.explode(' ');
+?>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <?
+      $c='a';
+      foreach($names as $name):
+      ?>
+        <th><a href="?sort=<?=
+          $c==$sort ? strtoupper($c) : $c
+          ?>"><?=$name ?></a></th>
+      <?
+        $c++;
+      endforeach;
+      ?>
+    </tr>
+  </thead>
 <?
 include('db.php');
 
 $result = $db->query(<<<SQL
   Select
     whom,
-    count(*) as N
+    count(*) as N,
+    strftime('%H:%M:%S %d.%m.%Y', max(ctime), 'localtime') as time
   From
     logs
   Group By
     whom
-  Order By 2 Desc
+  Order By $n $by
 SQL
 );
 
-while($row = $result->fetchArray())
-  echo '<li><b>', $row['whom'], '</b>: ',
-    '<span class="whom">', $row['N'], '</span>';
+while($row = $result->fetchArray()):
 ?>
-<style>
-.whom /* selector */
-{
-  color: red;
-  font-size: 90%;
-  background: yellow;
-  border: solid 1px green;
-}
-
-h2
-{
-  color: navy;
-  text-decoration: underline;
-}
-</style>
+<tr>
+  <td>
+    <?= $row['whom'] ?>
+    <? if($_SESSION['president'] == $row['whom']): ?>
+      <span class="label label-success">Ваш выбор</a>
+    <? endif; ?>
+  </td>
+  <td class=text-right>
+    <?= $row['N'] ?>
+  </td>
+  <td>
+    <?= $row['time'] ?>
+  </td>
+</tr>
+<?
+endwhile;
+?>
+</table>
