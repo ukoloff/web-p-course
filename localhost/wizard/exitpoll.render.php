@@ -34,7 +34,7 @@ $result = $db->query(<<<SQL
   Select
     whom,
     count(*) as n,
-    max(ctime) as time
+    to_char(max(ctime), 'DD.MM.YYYY HH24:MI:SS') as time
   From
     logs
   Group By
