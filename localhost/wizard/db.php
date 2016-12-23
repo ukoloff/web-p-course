@@ -1,5 +1,5 @@
 <?
 error_reporting(E_ALL);
-$db = new SQLite3('.data/votes.sq3');
-$db->enableExceptions(true);
+$db = new PDO('sqlite:.data/votes.sq3');
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>

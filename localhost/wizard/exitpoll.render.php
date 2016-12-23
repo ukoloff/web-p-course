@@ -43,7 +43,7 @@ $result = $db->query(<<<SQL
 SQL
 );
 
-while($row = $result->fetchArray()):
+while($row = $result->fetch()):
 ?>
 <tr>
   <td>
