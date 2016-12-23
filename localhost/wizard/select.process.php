@@ -8,7 +8,7 @@ if($_POST['action']):
   $stmt = $db->prepare(<<<SQL
     Insert Into
       logs(ctime, whom, ip, ua)
-    Values(datetime('now'), :whom, :ip, :ua)
+    Values(now(), :whom, :ip, :ua)
 SQL
 );
   $stmt->bindValue(':whom', $_POST['action']);

@@ -33,8 +33,8 @@ include('db.php');
 $result = $db->query(<<<SQL
   Select
     whom,
-    count(*) as N,
-    strftime('%H:%M:%S %d.%m.%Y', max(ctime), 'localtime') as time
+    count(*) as n,
+    max(ctime) as time
   From
     logs
   Group By
@@ -53,7 +53,7 @@ while($row = $result->fetch()):
     <? endif; ?>
   </td>
   <td class=text-right>
-    <?= $row['N'] ?>
+    <?= $row['n'] ?>
   </td>
   <td>
     <?= $row['time'] ?>
