@@ -9,6 +9,8 @@
 
     <!-- Bootstrap -->
     <link href="/assets/bootstrap.min.css" rel="stylesheet">
+    <script src="/assets/jquery.min.js"></script>
+    <script src="/assets/bootstrap.min.js"></script>
   </head>
   <body>
     <div class=container>

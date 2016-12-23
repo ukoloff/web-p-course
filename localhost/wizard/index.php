@@ -10,9 +10,14 @@ include 'bootstrap.php';
 ?>
 <p>
 <div class=text-right>
-  <input type='button' class="btn btn-danger pull-left"
-    value='Отмена' <?= $Disabled ?>
-    onclick="document.forms.cancel.submit()">
+  <div class='btn-group pull-left'>
+    <button type='button' class="btn btn-danger dropdown-toggle" data-toggle="dropdown" <?= $Disabled ?>>
+      Отмена
+    </button>
+    <ul class="dropdown-menu">
+      <li><a>Да, сбросить ввод</a></li>
+    </ul>
+  </div>
   <input type='button' class="btn btn-warning" value='Назад &lt;&lt;' <?= $Disabled ?>
     onclick="document.forms.back.submit()">
   <input type='submit' class="btn btn-success" value='Далее &gt;&gt;'>
